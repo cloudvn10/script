@@ -5,12 +5,12 @@ local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 
--- === НАСТРОЙКИ ===
+-SETTINGS-
 local CORRECT_KEY = "CLOUDVN.HUB-364832" -- ТВОЙ КЛЮЧ
 local SITE_URL = "https://cloudvn10.github.io/checkkeyy/"
 local isVerified = false
 
--- === ПЕРЕМЕННЫЕ ФУНКЦИЙ ===
+ -xd-
 local distractEnabled = false
 local airWalkEnabled = false
 local followEnabled = false
@@ -26,7 +26,7 @@ local monsterList = {"AstroMonster", "BlottMonster", "BobetteMonster", "BoxtenMo
 local isMonster = {}
 for _, name in pairs(monsterList) do isMonster[name] = true end
 
--- === ЗАЩИТА И УТИЛИТЫ ===
+-idk-
 local function getSafeParent()
     local success, target = pcall(function() return CoreGui end)
     if success and target then return target end
@@ -36,8 +36,7 @@ end
 local function safeSetClipboard(text)
     if setclipboard then setclipboard(text) end
 end
-
--- === ИНТЕРФЕЙС ===
+-great visual-
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "Xeno_Ultra_Hub_Final"
 ScreenGui.Parent = getSafeParent()
@@ -67,7 +66,7 @@ local function createPrettyBtn(name, parent, pos, size, color)
     return b
 end
 
--- === ОКНО КЛЮЧА ===
+-key-
 local KeyFrame = Instance.new("Frame", ScreenGui)
 KeyFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 20)
 KeyFrame.Size = UDim2.new(0, 350, 0, 250)
@@ -136,7 +135,7 @@ local FollowBtn = createPrettyBtn("FOLLOW: OFF", MainFrame, UDim2.new(0.05, 0, 0
 local EspBtn = createPrettyBtn("ESP MONSTERS: OFF", MainFrame, UDim2.new(0.05, 0, 0, 315), UDim2.new(0.9, 0, 0, 45), Color3.fromRGB(0, 150, 200))
 local CloseBtn = createPrettyBtn("CLOSE UI", MainFrame, UDim2.new(0.05, 0, 0, 380), UDim2.new(0.9, 0, 0, 45), Color3.fromRGB(40, 40, 40))
 
--- === ЛОГИКА ФУНКЦИЙ ===
+-func0-
 
 local function getActiveMonsters()
     local found = {}
@@ -162,14 +161,14 @@ local function createESP(part, name)
     table.insert(espObjects, bgui)
 end
 
--- Основной цикл
+-cycle0-
 RunService.Heartbeat:Connect(function()
     if not isVerified then return end
     local char = player.Character
     local root = char and char:FindFirstChild("HumanoidRootPart")
     if not root then return end
 
-    -- Исправленный AirWalk
+    -- air
     if airWalkEnabled and airPlatform then
         airPlatform.Position = Vector3.new(root.Position.X, airPlatform.Position.Y, root.Position.Z)
         if root.Position.Y < (airPlatform.Position.Y + 1) then
@@ -207,7 +206,7 @@ RunService.Heartbeat:Connect(function()
     end
 end)
 
--- === ОБРАБОТКА КНОПОК ===
+-- buttons
 CheckBtn.MouseButton1Click:Connect(function()
     if KeyInput.Text == CORRECT_KEY then
         isVerified = true
