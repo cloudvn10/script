@@ -5,12 +5,12 @@ local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 
--- === SETTINGS === 
+-- === SETTINGS ===
 local CORRECT_KEY = "CLOUDVN.HUB-364832" -- ТВОЙ КЛЮЧ
 local SITE_URL = "https://cloudvn10.github.io/checkkeyy/"
 local isVerified = false
 
- -- === xd ===
+-- === xd ===
 local distractEnabled = false
 local airWalkEnabled = false
 local followEnabled = false
@@ -36,7 +36,8 @@ end
 local function safeSetClipboard(text)
     if setclipboard then setclipboard(text) end
 end
--great visual-
+
+-- === great visual ===
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "Xeno_Ultra_Hub_Final"
 ScreenGui.Parent = getSafeParent()
@@ -96,7 +97,7 @@ Instance.new("UICorner", KeyInput)
 local CheckBtn = createPrettyBtn("ACTIVATE", KeyFrame, UDim2.new(0.1, 0, 0.6, 0), UDim2.new(0.8, 0, 0, 40), Color3.fromRGB(85, 0, 255))
 local GetBtn = createPrettyBtn("GET KEY (COPY LINK)", KeyFrame, UDim2.new(0.1, 0, 0.8, 0), UDim2.new(0.8, 0, 0, 40), Color3.fromRGB(40, 40, 45))
 
--- === menu ===
+-- === ГЛАВНОЕ МЕНЮ ===
 local MainFrame = Instance.new("Frame", ScreenGui)
 MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
 MainFrame.Size = UDim2.new(0, 300, 0, 450)
@@ -135,7 +136,7 @@ local FollowBtn = createPrettyBtn("FOLLOW: OFF", MainFrame, UDim2.new(0.05, 0, 0
 local EspBtn = createPrettyBtn("ESP MONSTERS: OFF", MainFrame, UDim2.new(0.05, 0, 0, 315), UDim2.new(0.9, 0, 0, 45), Color3.fromRGB(0, 150, 200))
 local CloseBtn = createPrettyBtn("CLOSE UI", MainFrame, UDim2.new(0.05, 0, 0, 380), UDim2.new(0.9, 0, 0, 45), Color3.fromRGB(40, 40, 40))
 
--- ===func0 ===
+-- === func0 ===
 
 local function getActiveMonsters()
     local found = {}
@@ -168,7 +169,7 @@ RunService.Heartbeat:Connect(function()
     local root = char and char:FindFirstChild("HumanoidRootPart")
     if not root then return end
 
-    -- === air ===
+    -- air
     if airWalkEnabled and airPlatform then
         airPlatform.Position = Vector3.new(root.Position.X, airPlatform.Position.Y, root.Position.Z)
         if root.Position.Y < (airPlatform.Position.Y + 1) then
@@ -177,7 +178,7 @@ RunService.Heartbeat:Connect(function()
         end
     end
 
-    -- === Distract ===
+    -- Distract
     if distractEnabled then
         local targets = getActiveMonsters()
         if #targets > 0 then
@@ -191,7 +192,7 @@ RunService.Heartbeat:Connect(function()
         end
     end
 
-    -- === Follow ===
+    -- Follow
     if followEnabled and followTarget and followTarget.Character then
         local tRoot = followTarget.Character:FindFirstChild("HumanoidRootPart")
         if tRoot then
@@ -200,7 +201,7 @@ RunService.Heartbeat:Connect(function()
         end
     end
 
-    -- === ESP ===
+    -- ESP
     if espEnabled then
         for _, mRoot in pairs(getActiveMonsters()) do createESP(mRoot, mRoot.Parent.Name) end
     end
@@ -236,7 +237,7 @@ AirWalkBtn.MouseButton1Click:Connect(function()
         airPlatform.Size = Vector3.new(20, 1, 20)
         airPlatform.Transparency = 0.7
         airPlatform.Anchored = true
-        airPlatform.CanCollide = true -- ТВЕРДАЯ ПЛАТФОРМА
+        airPlatform.CanCollide = true
         airPlatform.Position = root.Position + Vector3.new(0, -3.5, 0)
     else
         AirWalkBtn.Text = "AIR WALK: OFF"
